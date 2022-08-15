@@ -1,4 +1,5 @@
 .allForm {
+  /* width: 50vw; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,4 +30,5 @@ button {
   border-radius: 0.9375rem;
   border: none;
   box-shadow: 15px 11px 24px -16px rgba(30, 30, 60, 0.9);
+  transition: .125s all ease-in-out;
 }
