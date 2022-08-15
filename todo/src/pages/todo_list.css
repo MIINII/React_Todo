@@ -1,11 +1,15 @@
 #todolist_wrap {
-  width: 50vw;
-  height: 50vs;
-  margin: 20px auto 0 auto;
-  padding: 1.875rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  width: 50vw;
+  height: 50vh;
+  margin: 20px auto 0 auto;
+  padding: 1.875rem;
   background-color: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #fff;
 }
+
