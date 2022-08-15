@@ -1,0 +1,51 @@
+#todo_wrap {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.todo_con {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 1.5625rem;
+  padding: 0.625rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #fff;
+}
+
+.todo_con > h3 {
+  font-size: 20px;
+  text-align: center;
+  padding: 0.625rem;
+  color: #8d1db9;
+  font-weight: 800;
+}
+
+.todo_con > span {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #2c2f33;
+}
+
+.todo_con > button {
+  cursor: pointer;
+  height: 30px;
+  margin-top: 0.9375rem;
+  background-color: #fff;
+  color: #2c2f33;
+  border: 0.5px solid #8d1db9;
+  border-radius: 0.9375rem;
+  font-weight: 700;
+}
+
+.todo_con > button:hover {
+  background-color: #8d1db9;
+  color: #fff;
+}

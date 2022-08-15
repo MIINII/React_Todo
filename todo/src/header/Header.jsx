@@ -1,15 +1,12 @@
 import React from 'react';
-import './header.css'
-import { useState } from 'react';
+import './header.css';
 
-function Header() {
-  
-  return(
-    <div>
-       <h1>🎲오늘 할 일🎲</h1>
+const Header = props => {
+  return (
+    <div id='header_wrap'>
+      <h1 className='title'>🎲오늘 할 일🎲</h1>
     </div>
   );
+};
 
-}
-
-export default Header
+export default Header;

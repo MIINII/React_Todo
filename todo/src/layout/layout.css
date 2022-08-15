@@ -1,10 +1,9 @@
-#wrap,
-.todo {
+#layout_wrap {
   display: flex;
-  flex-direction: column;
-}
-#wrap {
+  width: 60%;
   margin: auto;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 

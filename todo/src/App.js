@@ -1,15 +1,14 @@
-import * as React from 'react';
-// import React from 'react';
-import GlobalStyle from './GlobalStyles';
-import styled from 'styled-components';
+import React from 'react';
+import Globalstyle from './GlobalStyles.js';
 import Layout from './layout/Layout';
+import TodoList from './pages/TodoList.jsx';
 
 function App(props) {
   return (
     <div>
       <React.Fragment>
-        <GlobalStyles />
         <Layout />
+        <Globalstyle />
       </React.Fragment>
     </div>
   );
