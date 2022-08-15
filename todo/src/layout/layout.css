@@ -1,0 +1,10 @@
+#wrap,
+.todo {
+  display: flex;
+  flex-direction: column;
+}
+#wrap {
+  margin: auto;
+  align-items: center;
+}
+
