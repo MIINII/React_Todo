@@ -1,15 +1,13 @@
 import React from 'react';
+import AllLayout from './components/AllLayout';
+import Form from './components/Form';
 import Globalstyle from './GlobalStyles.js';
-import Layout from './layout/Layout';
-import TodoList from './pages/TodoList.jsx';
 
-function App(props) {
+function App() {
   return (
     <div>
-      <React.Fragment>
-        <Layout />
-        <Globalstyle />
-      </React.Fragment>
+      <AllLayout />
+      <Globalstyle />
     </div>
   );
 }

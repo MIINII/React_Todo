@@ -1,10 +1,15 @@
+.form_area {
+ display: flex; 
+ flex-direction: column;
+}
 .allForm {
   /* width: 50vw; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin:auto;
+  position: sticky;
+  margin: 0 auto 100% auto;
 }
 
 .todo_input {

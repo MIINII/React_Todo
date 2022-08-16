@@ -1,5 +1,5 @@
-import React from 'react';
-import './todo.css';
+import React, { useState } from 'react';
+import './todo_item.css';
 import styled from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
 
@@ -17,6 +17,8 @@ const Remove = styled.div`
 
 const ItemBlock = styled.div`
   display: flex;
+  flex-direction: column
+  justify-content: center;
   align-items: center;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -31,14 +33,14 @@ const CheckCircle = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 16px;
-  border: ${props => (props.done ? `1px solid teal`:`1px solid #cab`)};
+  border: ${props => (props.done ? `1px solid teal` : `1px solid #cab`)};
   font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 15px;
   cursor: pointer;
-  color: ${props => (props.done && `#3c3c` )};
+  color: ${props => props.done && `#3c3c`};
 `;
 
 const Title = styled.span`
@@ -47,18 +49,22 @@ const Title = styled.span`
   color: ${props => (props.done ? `color` : `gray`)} black;
 `;
 
-const Todo = ({id, done, text}) => {
+const TodoItem = props => {
+  
   return (
     <div className='todo_wrap'>
       <ItemBlock>
-        <CheckCircle done={done}> {done && <MdDone />}</CheckCircle>
-        <Title done={done}>{text}</Title>
+        <CheckCircle done={props.done} onclick={props.done}>
+          {props.done && <MdDone />}
+        </CheckCircle>
+
+        <Title done={props.done}>{props.item}</Title>
         <Remove>
-          <MdDelete/>
+          <MdDelete />
         </Remove>
       </ItemBlock>
     </div>
   );
 };
 
-export default Todo;
+export default TodoItem;

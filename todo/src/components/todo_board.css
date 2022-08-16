@@ -1,7 +1,7 @@
-#todolist_wrap {
+#todoboard_wrap {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   width: 50vw;
