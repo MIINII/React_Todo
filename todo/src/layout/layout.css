@@ -1,0 +1,8 @@
+#layout_wrap {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
