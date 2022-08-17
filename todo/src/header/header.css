@@ -1,0 +1,29 @@
+#header_wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  /* width: 50vw; */
+  margin: auto;
+}
+.title {
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #2c2f33;
+  padding: 30px;
+}
+
+.day {
+  font-size: 25px;
+  text-align: right;
+  padding: 30px;
+  color: #2c2f33;
+  font-weight: 800;
+}
+
+.task {
+  display: block;
+  font-size: 1rem;
+  color: #2c2f33;
+  padding: 30px;
+}
