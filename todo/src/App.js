@@ -1,12 +1,11 @@
 import React from 'react';
-import AllLayout from './components/AllLayout';
-import Form from './components/Form';
+import TodoList from './pages/TodoLIst.jsx';
 import Globalstyle from './GlobalStyles.js';
 
 function App() {
   return (
     <div>
-      <AllLayout />
+      <TodoList />
       <Globalstyle />
     </div>
   );

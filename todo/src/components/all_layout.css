@@ -1,9 +1,0 @@
-#layout_wrap {
-  display: flex;
-  width: 60%;
-  margin: auto;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
