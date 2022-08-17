@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# ⚛️ React로 Todo-List 만들기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<span style="color:#008080">나曰 휴;; 진짜 힘들었다....리액트 마스터 하는 그날까지 화이팅...</span> 
 
-## Available Scripts
 
-In the project directory, you can run:
+## 01. React 프로젝트 만들어보기   
 
-### `yarn start`
+> ### nvm 설치확인하귀   
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+``` bash
+ nvm --version
+ nvm install 16.16.0
+```
+내가 무슨 14.12.0 버전? 사용하기 해서 아주 난리가 났었다. 분명 16.16.0이 설치 되어있었는데 14.뭐시기? 써서 `styled-components`도 못쓰고... `nvm use 16.16.0`해도 껏다키면 다시 원상복귀 하두라...
+``` bash
+ nvm ls
+ nvm uninstall [해당버전]
+```
+``` bash
+nvm alias default 16.16.0 // 기본버전으로 설정
+```   
+여튼 이제 yarn이나 npm으로 react를 실행해 보쟈쟈
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### CRA(Create React App) : 웹사이트 만들때 필요한것을 담은 선물상자
+```bash
+// 얀으로 깐다! 글로벌하게(전역으로) CRA패키지를!
+yarn add global create-react-app
+```
+### 리액트 프로젝트 드디어 만들기
+``` bash
+yarn create react-app [프로젝트명]
+```
+이제 하라는 데로 하면 끝!
 
-### `yarn test`
+---
+## 02. jsx
+> JSX 문법을 사용해서 React 요소를 만들고 DOM에 렌더링 시킨다...
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+JS가 있는데 그안에 HTML을 쓸수 있으요.   
+html 태그같은 마크업을 넣어 뷰(UI) 작업을 편하게 할수 있답니다.
+   
+  > JSX 규칙
+  01. 태그는 꼭 닫자!
+  2.  무족권 한개의 엘리먼트 반환하자!   `<div></div>`안에 다 때려넣기
+  3. JS값을 가져오려면 **{중괄호}**를 사용하자!
+  4.  `class`말고 `className`
+  5.  인라인으로 스타일 넣기   
+   
+---
+## 03. 이제 어떻게 구조를 만들지?
+이걸 절대 까먹으면 안됩니다 나중에 헷갈려요   
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+>  `App > TodoList > Layout > Header / Form / List  > Todo`   
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+App은 뷰를 보여주는 페이지입니다. 그안에 TodoList라는 큰 틀이 있고 그안에 Layout이 존재하여 Header, Form, List를 담고 있는것! 이제 리스트 안에 Todo들이 쑉ㅆ ㅛㄱ 들어 가겠지요?
