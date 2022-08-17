@@ -1,0 +1,9 @@
+.todo_wrap {
+  max-width: 160vw;
+  min-width: 106.6667vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
