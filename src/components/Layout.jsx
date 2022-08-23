@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import './layout.css';
 
-import Header from '../header/Header';
-import Form from '../form/Form';
-import List from '../list/List';
+import Header from './Header';
+import Form from './Form';
+import List from './List';
 
 function Layout() {
   const [todos, setTodos] = useState([
@@ -29,7 +29,7 @@ function Layout() {
 
   return (
     <div id='layout_wrap'>
-      <Header todos={todos} setTodos={setTodos}/>
+      <Header todos={todos} setTodos={setTodos} />
       <Form todos={todos} setTodos={setTodos} />
       <List todos={todos} onToggle={onToggle} onRemove={onRemove} />
     </div>
