@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
+import { Navigate } from 'react-router-dom';
 import './todo.css';
+import Detail from './Detail';
+import Form from './Form';
 
 const Remove = styled.div`
   display: flex;
@@ -21,7 +24,7 @@ const ItemBlock = styled.div`
   align-items: center;
   flex-wrap: wrap;
   width: 300px;
-  
+
   padding-top: 12px;
   padding-bottom: 12px;
   &:hover {
@@ -63,28 +66,58 @@ const Con = styled.span`
   text-decoration-line: ${props => props.isDone && `line-through`};
 `;
 
-const Todo = ({ todos, onToggle, onRemove }) => {
-  console.log('호잇', todos);
-  const { id, title, con, isDone } = todos;
+// const Todo = ({ todos, onToggle, onRemove }) => {
+//   console.log('호잇', todos);
+//   const { id, title, con, isDone } = todos;
 
+//   return (
+//     <div className='todoitem'>
+//       <ItemBlock>
+//         <CheckCircle isDone={isDone} onClick={() => onToggle(id)}>
+//           {isDone && <MdDone />}
+//         </CheckCircle>
+
+//         <Title
+//           onClick={() => {
+//             Navigate('/Detail/' + todos.id, <Detail />);
+//           }}
+//           isDone={isDone}>
+//           {title}
+//         </Title>
+//         <Con isDone={isDone}>{con}</Con>
+
+//         <Remove onClick={() => onRemove(id)}>
+//           <MdDelete />
+//         </Remove>
+//       </ItemBlock>
+//     </div>
+//   );
+// };
+
+const Todo = ({title, isDone}) => {
   return (
-    <div className='todoitem'>
-      <ItemBlock>
-        <CheckCircle isDone={isDone} onClick={() => onToggle(id)}>
-          {isDone && <MdDone />}
-        </CheckCircle>
-
-        <Title isDone={isDone}>{title}</Title>
-        <Con isDone={isDone}>{con}</Con>
-
-        <Remove onClick={() => onRemove(id)}>
-          <MdDelete />
-        </Remove>
-      </ItemBlock>
-    </div>
-  );
-};
-
+        <div className='todoitem'>
+          <ItemBlock>
+            {/* <CheckCircle isDone={isDone} onClick={() => onToggle(id)}>
+              {isDone && <MdDone />}
+            </CheckCircle>
+     */}
+            <Title
+              onClick={() => {
+                Navigate('/Detail/' + todos.id, <Detail />);
+              }}
+              isDone={isDone}>
+              {title}
+            </Title>
+            {/* <Con isDone={isDone}>{con}</Con> */}
+{/*     
+            <Remove onClick={() => onRemove(id)}>
+              <MdDelete />
+            </Remove> */}
+          </ItemBlock>
+        </div>
+      );
+}
 export default Todo;
 
 // {todos.map(todos => {
