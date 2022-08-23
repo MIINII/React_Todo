@@ -1,14 +1,18 @@
 import React from 'react';
-import TodoList from './pages/TodoLIst.jsx';
+import TodoList from './components/TodoLIst';
+import Detail from './components/Detail';
 import Globalstyle from './GlobalStyles.js';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <TodoList />
-      <Globalstyle />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<TodoList />} />
+        <Route path='/detial/:id' element={<Detail />} />
+        <Globalstyle />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
 export default App;
