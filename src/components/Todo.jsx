@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTodo, toggleStatusTodo } from '../redux/modules/todos';
+import { deleteTodo, delteTodo, toggleTodo } from '../redux/modules/todos';
 import { Navigate } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -101,19 +101,14 @@ const Con = styled.span`
 //   );
 // };
 
-const Todo = ({id, isDone, title, con}) => {
+const Todo = ({ id, isDone, title, con }) => {
   const todos = useSelector(state => state.todos.todos);
   const dispatch = useDispatch();
 
   return (
     <div className='todoitem'>
       <ItemBlock>
-        <CheckCircle
-          onClick={() => {
-            dispatch({ type: 'TOGGLE_STATUS_TODO', payload: { isDone } });
-          }}>
-          {isDone && <MdDone />}
-        </CheckCircle>
+        <CheckCircle isDone={isDone} onClick={toggleTodo}>{isDone && <MdDone />}</CheckCircle>
 
         <Title
           onClick={() => {
@@ -124,7 +119,7 @@ const Todo = ({id, isDone, title, con}) => {
         </Title>
         <Con isDone={isDone}>{con}</Con>
 
-        <Remove onClick={() => dispatchEvent({ type: 'DELETE_TODO', payload: { isDone } })}>
+        <Remove onClick={delteTodo}>
           <MdDelete />
         </Remove>
       </ItemBlock>

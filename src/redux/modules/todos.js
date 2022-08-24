@@ -11,7 +11,7 @@ export const toggleTodo = createAction(TOGGLE_TODO, payload => payload);
 
 // initial State
 const initialState = {
-  todos: [{ id: 0, title: '', con: '', isDone: false }],
+  todos: [],
 };
 
 // Reducer

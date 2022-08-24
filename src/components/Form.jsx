@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../redux/modules/todos';
+import todos, { addTodo } from '../redux/modules/todos';
 import './form.css';
 // state를 업뎃해주는 reducer 업뎃을 요구하는 행위가 dispatch 그 내용이 action
 // Dispatch(Action) => Reducer(Stae, Action)
@@ -52,12 +52,14 @@ import './form.css';
 
 const Form = () => {
   const [inputValue, setInputValue] = useState({ title: '', con: '' });
+  const todos = useSelector(state => state.todos.todos);
   const dispatch = useDispatch();
 
   const onClickAdd = () => {
     const { title, con } = inputValue;
+
     const todo = {
-      id: null,
+      id: todos.length + 1,
       title: title,
       con: con,
       isDone: false,
@@ -68,14 +70,19 @@ const Form = () => {
     dispatch(addTodo(todo));
   };
 
+  const onChange = e => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
+  // e => setInputValue(e.target.value)
   return (
     <div className='form_area'>
       <div className='allForm'>
         {/* 제목 */}
-        <input className='todo_input' type='text' placeholder='제목' value={inputValue.title} onChange={e => setInputValue(e.target.value)} />
+        <input className='todo_input' name='title' type='text' placeholder='제목' value={inputValue.title} onChange={onChange} />
 
         {/* 내용 */}
-        <input className='todo_input' type='text' placeholder='뭐하려했더라' value={inputValue.con} onChange={e => setInputValue(e.target.value)} />
+        <input className='todo_input' name='con' type='text' placeholder='뭐하려했더라' value={inputValue.con} onChange={onChange} />
 
         {/* 입력버튼 */}
         <button onClick={onClickAdd}>입력</button>
