@@ -52,41 +52,33 @@ import './form.css';
 
 const Form = () => {
   const [inputValue, setInputValue] = useState({ title: '', con: '' });
-  const todos = useSelector(state => state.todos.todos);
   const dispatch = useDispatch();
 
-  const onSubmitHandler = e => {
-    e.preventDefault();
-    if (inputValue.title === '') return; // 아무것도 입력하지 않았을 때 dispatch 하지 않음
+  const onClickAdd = () => {
+    const { title, con } = inputValue;
+    const todo = {
+      id: null,
+      title: title,
+      con: con,
+      isDone: false,
+    };
 
-    dispatch(
-      addTodo({
-        id: todos.length + 1,
-        payload: { inputValue },
-      })
-    );
+    if (title === '' || con === '') return;
+
+    dispatch(addTodo(todo));
   };
 
   return (
     <div className='form_area'>
       <div className='allForm'>
-        <form onSubmit={onSubmitHandler}>
-          {/* 제목 */}
-          <input className='todo_input' type='text' placeholder='제목' value={inputValue.title} onChange={e => setInputValue(e.target.value)} />
+        {/* 제목 */}
+        <input className='todo_input' type='text' placeholder='제목' value={inputValue.title} onChange={e => setInputValue(e.target.value)} />
 
-          {/* 내용 */}
-          <input className='todo_input' type='text' placeholder='뭐하려했더라' value={inputValue.con} onChange={e => setInputValue(e.target.value)} />
+        {/* 내용 */}
+        <input className='todo_input' type='text' placeholder='뭐하려했더라' value={inputValue.con} onChange={e => setInputValue(e.target.value)} />
 
-          {/* 입력버튼 */}
-          <button
-            onClick={() => {
-              console.log('🚀 ~ Form ~ onClick', 'onClick');
-              dispatch({ type: 'ADD_TODO', payload: { inputValue } });
-            }}>
-            입력
-          </button>
-     
-        </form>
+        {/* 입력버튼 */}
+        <button onClick={onClickAdd}>입력</button>
       </div>
     </div>
   );
