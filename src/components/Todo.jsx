@@ -1,11 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { MdDone, MdDelete } from 'react-icons/md';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteTodo, toggleStatusTodo } from '../redux/modules/todos';
 import { Navigate } from 'react-router-dom';
+
+import styled from 'styled-components';
+import { MdDone, MdDelete } from 'react-icons/md';
 import './todo.css';
+
 import Detail from './Detail';
 import Form from './Form';
+
+/** style-components **/
 
 const Remove = styled.div`
   display: flex;
@@ -67,14 +73,45 @@ const Con = styled.span`
   text-decoration-line: ${props => props.isDone && `line-through`};
 `;
 
-const Todo = ({ todos, onToggle, onRemove }) => {
-  console.log('호잇', todos);
-  const { id, title, con, isDone } = todos;
+// const Todo = ({ todos, onToggle, onRemove }) => {
+//   console.log('호잇', todos);
+//   const { id, title, con, isDone } = todos;
+
+//   return (
+//     <div className='todoitem'>
+//       <ItemBlock>
+//         <CheckCircle isDone={isDone} onClick={() => onToggle(id)}>
+//           {isDone && <MdDone />}
+//         </CheckCircle>
+
+//         <Title
+//           onClick={() => {
+//             Navigate('/Detail/' + todos.id, <Detail />);
+//           }}
+//           isDone={isDone}>
+//           {title}
+//         </Title>
+//         <Con isDone={isDone}>{con}</Con>
+
+//         <Remove onClick={() => onRemove(id)}>
+//           <MdDelete />
+//         </Remove>
+//       </ItemBlock>
+//     </div>
+//   );
+// };
+
+const Todo = ({id, isDone, title, con}) => {
+  const todos = useSelector(state => state.todos.todos);
+  const dispatch = useDispatch();
 
   return (
     <div className='todoitem'>
       <ItemBlock>
-        <CheckCircle isDone={isDone} onClick={() => onToggle(id)}>
+        <CheckCircle
+          onClick={() => {
+            dispatch({ type: 'TOGGLE_STATUS_TODO', payload: { isDone } });
+          }}>
           {isDone && <MdDone />}
         </CheckCircle>
 
@@ -87,14 +124,13 @@ const Todo = ({ todos, onToggle, onRemove }) => {
         </Title>
         <Con isDone={isDone}>{con}</Con>
 
-        <Remove onClick={() => onRemove(id)}>
+        <Remove onClick={() => dispatchEvent({ type: 'DELETE_TODO', payload: { isDone } })}>
           <MdDelete />
         </Remove>
       </ItemBlock>
     </div>
   );
 };
-
 
 export default Todo;
 

@@ -72,18 +72,20 @@ const Form = () => {
       <div className='allForm'>
         <form onSubmit={onSubmitHandler}>
           {/* 제목 */}
-          <input className='todo_input' type='text' placeholder='제목' value={inputValue.title} onChange={e => setInputValue(e.target.value.title)} />
+          <input className='todo_input' type='text' placeholder='제목' value={inputValue.title} onChange={e => setInputValue(e.target.value)} />
 
           {/* 내용 */}
-          <input className='todo_input' type='text' placeholder='뭐하려했더라' value={inputValue.con} onChange={e => setInputValue(e.target.value.con)} />
+          <input className='todo_input' type='text' placeholder='뭐하려했더라' value={inputValue.con} onChange={e => setInputValue(e.target.value)} />
 
           {/* 입력버튼 */}
           <button
             onClick={() => {
+              console.log('🚀 ~ Form ~ onClick', 'onClick');
               dispatch({ type: 'ADD_TODO', payload: { inputValue } });
             }}>
             입력
           </button>
+     
         </form>
       </div>
     </div>

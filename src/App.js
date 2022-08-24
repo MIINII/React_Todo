@@ -4,15 +4,24 @@ import Detail from './components/Detail';
 import Globalstyle from './GlobalStyles.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path='/' element={<TodoList />} />
+//         <Route path='/detial/:id' element={<Detail />} />
+//         <Globalstyle />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<TodoList />} />
-        <Route path='/detial/:id' element={<Detail />} />
-        <Globalstyle />
-      </Routes>
-    </BrowserRouter>
-  );
+    <>
+      <TodoList />
+      <Globalstyle />
+    </>
+  )
 }
 export default App;
