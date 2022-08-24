@@ -1,5 +1,6 @@
-import React, { useState, useReducer } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo } from '../redux/modules/todos';
 import './form.css';
 // state를 업뎃해주는 reducer 업뎃을 요구하는 행위가 dispatch 그 내용이 action
 // Dispatch(Action) => Reducer(Stae, Action)
@@ -49,31 +50,41 @@ import './form.css';
 //   );
 // };
 
-const reducer = (state, action) => {};
-
-const todos = {
-  id: 0,
-  title: '',
-  con: '',
-  isDone: false,
-};
-
 const Form = () => {
-  const [inputTitleValue, setInputTitleValue] = useState('');
-  const [inputConValue, setInputConValue] = useState('');
-  const [formInfo, dispatch] = useReducer(reducer, todos);
+  const [inputValue, setInputValue] = useState({ title: '', con: '' });
+  const todos = useSelector(state => state.todos.todos);
+  const dispatch = useDispatch();
+
+  const onSubmitHandler = e => {
+    e.preventDefault();
+    if (inputValue.title === '') return; // 아무것도 입력하지 않았을 때 dispatch 하지 않음
+
+    dispatch(
+      addTodo({
+        id: todos.length + 1,
+        payload: { inputValue },
+      })
+    );
+  };
 
   return (
     <div className='form_area'>
       <div className='allForm'>
-        {/* 제목 */}
-        <input className='todo_input' type='text' placeholder='제목' value={inputTitleValue} />
+        <form onSubmit={onSubmitHandler}>
+          {/* 제목 */}
+          <input className='todo_input' type='text' placeholder='제목' value={inputValue.title} onChange={e => setInputValue(e.target.value.title)} />
 
-        {/* 내용 */}
-        <input className='todo_input' type='text' placeholder='뭐하려했더라' value={inputConValue} />
+          {/* 내용 */}
+          <input className='todo_input' type='text' placeholder='뭐하려했더라' value={inputValue.con} onChange={e => setInputValue(e.target.value.con)} />
 
-        {/* 입력버튼 */}
-        <button type='button'>입력</button>
+          {/* 입력버튼 */}
+          <button
+            onClick={() => {
+              dispatch({ type: 'ADD_TODO', payload: { inputValue } });
+            }}>
+            입력
+          </button>
+        </form>
       </div>
     </div>
   );
