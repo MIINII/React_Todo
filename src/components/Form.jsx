@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import todos, { addTodo } from '../redux/modules/todos';
+import { addTodo } from '../redux/modules/todos';
+import { v4 as uuidv4 } from 'uuid';
 import './form.css';
+
 // state를 업뎃해주는 reducer 업뎃을 요구하는 행위가 dispatch 그 내용이 action
 // Dispatch(Action) => Reducer(Stae, Action)
 
@@ -52,14 +54,14 @@ import './form.css';
 
 const Form = () => {
   const [inputValue, setInputValue] = useState({ title: '', con: '' });
-  const todos = useSelector(state => state.todos.todos);
+  // const todos = useSelector(state => state.todos.todos);
   const dispatch = useDispatch();
 
   const onClickAdd = () => {
     const { title, con } = inputValue;
 
     const todo = {
-      id: todos.length + 1,
+      id: uuidv4(),
       title: title,
       con: con,
       isDone: false,
@@ -74,6 +76,7 @@ const Form = () => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   };
+
   // e => setInputValue(e.target.value)
   return (
     <div className='form_area'>

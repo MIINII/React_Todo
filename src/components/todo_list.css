@@ -1,6 +1,6 @@
 .todo_wrap {
-  max-width: 160vw;
-  min-width: 106.6667vw;
+  max-width: 186.6667vw;
+  min-width: 50rem;
   margin: auto;
   display: flex;
   flex-direction: column;

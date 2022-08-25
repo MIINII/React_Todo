@@ -1,26 +1,33 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { addTodo, delteTodo, toggleTodo } from '../redux/modules/todos';
 
 import Todo from './Todo';
 import './list.css';
 
 const List = () => {
-  const state = useSelector(state => state.todos.todos);
+  const state = useSelector(state => {
+    return state.todos.todos;
+  });
+  const _getTodosByIsDone = (todos, isDone) => {
+    return todos.filter(todo => todo.isDone === isDone);
+  };
 
-  const workingList = state.filter(todo => todo.isDone === false).map((todo, i) => <Todo todo={todo} key={todo.id} ></Todo>);
-
-  const doneList = state.filter(todo => todo.isDone === true).map((todo, i) => <Todo todo={todo} key={todo.id}></Todo>);
+  const workingList = _getTodosByIsDone(state, false);
+  const doneList = _getTodosByIsDone(state, true);
 
   return (
-    <div id="todoboard_wrap">
+    <div id='todoboard_wrap'>
       <div className='Doing'>
         <h2>🧃 하는중이야</h2>
-        {workingList}
+        {workingList.map(todo => {
+          return <Todo key={todo.id} todo={todo} />;
+        })}
       </div>
       <div className='Done'>
         <h2>📌 끝!</h2>
-        {doneList}
+        {doneList.map(todo => {
+          return <Todo key={todo.id} todo={todo} />;
+        })}
       </div>
     </div>
   );

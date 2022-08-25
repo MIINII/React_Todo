@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTodo, delteTodo, toggleTodo } from '../redux/modules/todos';
-import { Navigate } from 'react-router-dom';
+import { deleteTodo, toggleTodo } from '../redux/modules/todos';
+import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
@@ -101,25 +101,31 @@ const Con = styled.span`
 //   );
 // };
 
-const Todo = ({ id, isDone, title, con }) => {
-  const todos = useSelector(state => state.todos.todos);
+const Todo = ({ todo, isDone }) => {
+  // const todos = useSelector(state => state.todos.todos);
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
+
+  const onRemove = id => dispatch(deleteTodo(id));
+  const onToggle = id => dispatch(toggleTodo(id));
 
   return (
     <div className='todoitem'>
       <ItemBlock>
-        <CheckCircle isDone={isDone} onClick={toggleTodo}>{isDone && <MdDone />}</CheckCircle>
+        <CheckCircle isDone={todo.isDone} onClick={() => onToggle(todo.id)}>
+          {todo.isDone && <MdDone />}
+        </CheckCircle>
 
         <Title
           onClick={() => {
-            Navigate('/Detail/' + todos.id, <Detail />);
+            Navigate('/Detail/' + todo.id, <Detail />);
           }}
-          isDone={isDone}>
-          {title}
+          isDone={todo.isDone}>
+          {todo.title}
         </Title>
-        <Con isDone={isDone}>{con}</Con>
+        <Con isDone={isDone}>{todo.con}</Con>
 
-        <Remove onClick={delteTodo}>
+        <Remove onClick={() => onRemove(todo.id)}>
           <MdDelete />
         </Remove>
       </ItemBlock>
