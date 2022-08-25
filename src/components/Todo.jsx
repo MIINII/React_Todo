@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTodo, toggleTodo } from '../redux/modules/todos';
+import { deleteTodo, toggleTodo, detailTodo } from '../redux/modules/todos';
 import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -108,6 +108,7 @@ const Todo = ({ todo, isDone }) => {
 
   const onRemove = id => dispatch(deleteTodo(id));
   const onToggle = id => dispatch(toggleTodo(id));
+  const onDetail = id => dispatch(detailTodo(id));
 
   return (
     <div className='todoitem'>

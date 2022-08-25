@@ -2,14 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './header.css';
 
+
 const Header = props => {
   const state = useSelector(state => {
     return state.todos.todos;
   });
 
-  const undoneTasks = (todos, isDone) => {
-    return todos.filter(todo => todo.isDone !== isDone);
-  };
+  const undoneTasks = state.filter(todo => !todo.isDone);
 
   const today = new Date();
   const dateString = today.toLocaleDateString('ko-KR', {

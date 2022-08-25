@@ -54,12 +54,13 @@ import './form.css';
 
 const Form = () => {
   const [inputValue, setInputValue] = useState({ title: '', con: '' });
-  // const todos = useSelector(state => state.todos.todos);
   const dispatch = useDispatch();
 
-  const onClickAdd = () => {
+  const onClickAdd = e => {
     const { title, con } = inputValue;
 
+    e.preventDefault();
+    if (title === '' || con === '') return;
     const todo = {
       id: uuidv4(),
       title: title,
@@ -67,14 +68,17 @@ const Form = () => {
       isDone: false,
     };
 
-    if (title === '' || con === '') return;
-
     dispatch(addTodo(todo));
+
+    setInputValue({
+      title: '',
+      con: '',
+    });
   };
 
   const onChange = e => {
     const { name, value } = e.target;
-    setInputValue({ ...inputValue, [name]: value });
+    setInputValue({ ...inputValue, [name]: value }); // name 키를 가진 값을 value 로 설정
   };
 
   // e => setInputValue(e.target.value)

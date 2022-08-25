@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import reportWebVitals from "./reportWebVitals";
+// import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/config/configStore';
 import { Provider } from 'react-redux';
@@ -29,5 +29,5 @@ root.render(
   </BrowserRouter>
 );
 
-reportWebVitals();
+// reportWebVitals();
 // 함수이름을 가진 태그를 만들수 있따.

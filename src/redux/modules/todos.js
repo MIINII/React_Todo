@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELTE_TODO';
 const TOGGLE_TODO = 'TOGGLE_TODO';
+const DETAIL_TODO = 'DETAIL_TODO';
 
 // Action Creator
 export const addTodo = todo => {
@@ -14,6 +15,9 @@ export const deleteTodo = todo => {
 };
 export const toggleTodo = todo => {
   return { type: TOGGLE_TODO, todo };
+};
+export const detailTodo = todo => {
+  return { type: DETAIL_TODO, todo };
 };
 // export const delteTodo = createAction(DELETE_TODO, payload => payload);
 // export const toggleTodo = createAction(TOGGLE_TODO, payload => payload);
@@ -54,6 +58,10 @@ const todos = (state = initialState, action) => {
           return todo.id === action.todo ? { ...todo, isDone: !todo.isDone } : todo;
         }),
       };
+    case DETAIL_TODO:
+      const target_todo = state.list.filter(todo => todo.id === action.todo_id)[0];
+
+      return { ...state, current: target_todo };
     default:
       return state;
   }
